@@ -1,0 +1,5 @@
+D:\test_projects\experiment\Experiment\Experiment\bin\Debug\Experiment.exe
+D:\test_projects\experiment\Experiment\Experiment\bin\Debug\Experiment.pdb
+D:\test_projects\experiment\Experiment\Experiment\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\test_projects\experiment\Experiment\Experiment\obj\x86\Debug\Experiment.exe
+D:\test_projects\experiment\Experiment\Experiment\obj\x86\Debug\Experiment.pdb
