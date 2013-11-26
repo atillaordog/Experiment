@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Experiment
 {
-    abstract class Creature
+    abstract public class Creature
     {
         protected Location location;
 
@@ -13,10 +13,26 @@ namespace Experiment
 
         protected int energy = 0;
 
-        Creature()
+        protected int id = 0;
+
+        protected Environment environment;
+
+        public Creature(int id)
         {
+            this.id = id;
+
             this.location = new Location();
             this.knowledgestack = new List<Knowledge>();
+        }
+
+        public int getId()
+        {
+            return this.id;
+        }
+
+        public void setId(int id)
+        {
+            this.id = id;
         }
 
         public void setLocation(Location l)
@@ -72,5 +88,12 @@ namespace Experiment
 
             return false;
         }
+
+        public void passEnvironment(Environment e)
+        {
+            this.environment = e;
+        }
+
+        abstract public void doAction();
     }
 }

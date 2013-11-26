@@ -5,11 +5,13 @@ using System.Text;
 
 namespace Experiment
 {
-    abstract class Knowledge
+    abstract public class Knowledge
     {
         protected Location location;
 
         protected int id = 0;
+
+        protected Creature creature;
 
         abstract public void use();
         
@@ -31,6 +33,11 @@ namespace Experiment
         public void setId(int id)
         {
             this.id = id;
+        }
+
+        public void passCreature(Creature c)
+        {
+            this.creature = c;
         }
     }
 }

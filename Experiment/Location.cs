@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Experiment
 {
-    class Location
+    public class Location
     {
         public int x = 0, y = 0;
 
