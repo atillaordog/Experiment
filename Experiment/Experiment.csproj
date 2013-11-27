@@ -51,6 +51,7 @@
     <Compile Include="Experiment.cs" />
     <Compile Include="Knowledge.cs" />
     <Compile Include="Location.cs" />
+    <Compile Include="Outputter.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

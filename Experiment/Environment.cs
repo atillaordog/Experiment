@@ -117,13 +117,20 @@ namespace Experiment
 
         public void doOneStepProcedural()
         {
+            List<int> p_to_do = new List<int>();
+
             for (int i = 0, m = this.positions.Count; i < m; i++)
             {
                 if (this.positions[i].getIsCreature())
                 {
-                    this.positions[i].getCreature().passEnvironment(this);
-                    this.positions[i].getCreature().doAction();
+                    p_to_do.Add(i);
                 }
+            }
+
+            for (int i = 0, m = p_to_do.Count; i < m; i++)
+            {
+                this.positions[p_to_do[i]].getCreature().passEnvironment(this);
+                this.positions[p_to_do[i]].getCreature().doAction();
             }
         }
 

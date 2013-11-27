@@ -63,6 +63,7 @@
     <Compile Include="TestCreature.cs" />
     <Compile Include="TestExperiment.cs" />
     <Compile Include="TestKnowledge.cs" />
+    <Compile Include="TestOutputter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Experiment\Experiment.csproj">

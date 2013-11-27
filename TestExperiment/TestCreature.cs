@@ -20,30 +20,34 @@ namespace TestExperiment
             {
                 this.knowledgestack[0].passCreature(this);
                 this.knowledgestack[0].use();
+                this.knowledgestack.Remove(this.knowledgestack[0]);
             }
         }
 
         public override void doAction()
         {
-            if (this.environment.getSize()[0] >= this.location.x + 1 && this.environment.getPosition(this.location.x, this.location.y).getIsCreature())
+            if (this.environment.getSize()[0] >= this.location.x + 1 
+                && this.energy > 0
+                && !this.environment.getPosition(this.location.x+1, this.location.y).getIsCreature())
             {
-                Position p = this.environment.getPosition(this.location.x, this.location.y);
-                p.resetCreature();
-
-                p = this.environment.getPosition(this.location.x + 1, this.location.y);
-                p.setCreature(this);
-
+                this.environment.getPosition(this.location.x, this.location.y).resetCreature();
+                
                 this.location.x++;
+                
+                this.environment.addCreatureToPosition(this.location.x, this.location.y, this);
 
-                if (p.getIsKnowledge())
+                if (this.environment.getPosition(this.location.x, this.location.y).getIsKnowledge())
                 {
-                    this.gatherKnowledge(p.getKnowledge());
+                    this.gatherKnowledge(this.environment.getPosition(this.location.x, this.location.y).getKnowledge());
                 }
+
+                this.energy--;
             }
 
             this.useKnowledge();
 
-            Console.WriteLine("Creature ID."+this.id+" is on position "+this.location.x+"x"+this.location.y+" with energy level: "+this.energy);
+            Console.SetCursorPosition(this.location.x, this.location.y);
+            Console.Write(this.energy);
         }
     }
 }
