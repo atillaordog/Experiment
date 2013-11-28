@@ -136,20 +136,31 @@ namespace Experiment
 
         public void doOneStepThreaded()
         {
+            List<int> p_to_do = new List<int>();
+
             List<Thread> threads = new List<Thread>();
 
             for (int i = 0, m = this.positions.Count; i < m; i++)
             {
                 if (this.positions[i].getIsCreature())
                 {
-                    this.positions[i].getCreature().passEnvironment(this);
+                    p_to_do.Add(i);
+                }
+            }
 
-                    Thread t = new Thread(new ThreadStart(this.positions[i].getCreature().doAction));
+            for (int i = 0, m = p_to_do.Count; i < m; i++)
+            {
+                if (this.positions[p_to_do[i]].getIsCreature())
+                {
+                    this.positions[p_to_do[i]].getCreature().passEnvironment(this);
+
+                    Thread t = new Thread(new ThreadStart(this.positions[p_to_do[i]].getCreature().doAction));
 
                     t.Start();
                     threads.Add(t);
                 }
             }
+
         }
 
     }

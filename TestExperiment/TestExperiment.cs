@@ -27,14 +27,14 @@ namespace TestExperiment
             Random rand = new Random();
             for (int i = 0; i < 100; i++)
             {
-                this.environment.addKnowledgeToPosition(rand.Next(0, 19), rand.Next(0, 19), new TestKnowledge());
+                this.environment.addKnowledgeToPosition(rand.Next(2, 19), rand.Next(2, 19), new TestKnowledge());
             }
         }
 
         override public void run()
         {
             TestOutputter outputter = new TestOutputter();
-            int counter = 10;
+            int counter = 19;
             while (counter > 0)
             {
                 // Check if there is creature left with any energy or a creature got to the end
@@ -67,8 +67,6 @@ namespace TestExperiment
                     outputter.passEnvironment(this.environment);
                     outputter.write();
                     this.environment.doOneStepProcedural();
-
-                    Console.ReadKey();
                 }
 
                 counter--;

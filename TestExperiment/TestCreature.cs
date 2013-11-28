@@ -20,7 +20,7 @@ namespace TestExperiment
             {
                 this.knowledgestack[0].passCreature(this);
                 this.knowledgestack[0].use();
-                this.knowledgestack.Remove(this.knowledgestack[0]);
+                this.knowledgestack.Clear();
             }
         }
 
@@ -30,21 +30,21 @@ namespace TestExperiment
                 && this.energy > 0
                 && !this.environment.getPosition(this.location.x+1, this.location.y).getIsCreature())
             {
-                this.environment.getPosition(this.location.x, this.location.y).resetCreature();
-                
-                this.location.x++;
-                
-                this.environment.addCreatureToPosition(this.location.x, this.location.y, this);
-
-                if (this.environment.getPosition(this.location.x, this.location.y).getIsKnowledge())
+                int x = this.location.x, y = this.location.y;
+                if (this.environment.getPosition(x, y).getIsKnowledge())
                 {
-                    this.gatherKnowledge(this.environment.getPosition(this.location.x, this.location.y).getKnowledge());
+                    this.gatherKnowledge(this.environment.getPosition(x, y).getKnowledge());
+                    this.useKnowledge();
                 }
 
+                this.environment.getPosition(x, y).resetCreature();
+
+                x++;
+
+                this.environment.addCreatureToPosition(x, y, this);
+                
                 this.energy--;
             }
-
-            this.useKnowledge();
 
             Console.SetCursorPosition(this.location.x, this.location.y);
             Console.Write(this.energy);

@@ -21,14 +21,17 @@ namespace TestExperiment
             {
                 for (int j = 0; j < height; j++)
                 {
-                    map[i, j] = 0;
+                    map[j, i] = 0;
 
-                    if (this.e.getPosition(i, j).getIsKnowledge())
+                    if (this.e.getPosition(j, i).getIsKnowledge())
                     {
-                        map[i, j] = 2;
+                        map[j, i] = 2;
+                        Console.Write("k");
                     }
-
-                    Console.Write("" + map[i,j]);
+                    else
+                    {
+                        Console.Write("" + map[j, i]);
+                    }
                 }
                
                 Console.WriteLine("");
