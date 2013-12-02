@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestExperiment", "TestExper
 		{88F57156-4014-4BD3-A3DD-40916FA3B6EF} = {88F57156-4014-4BD3-A3DD-40916FA3B6EF}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viewer", "Viewer\Viewer.csproj", "{4DEAF7FA-3CD1-4AC7-BC3C-208FFADBD5B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -22,6 +24,10 @@ Global
 		{34485E9D-EDFF-483B-BFF3-AAFFC54F384E}.Debug|x86.Build.0 = Debug|x86
 		{34485E9D-EDFF-483B-BFF3-AAFFC54F384E}.Release|x86.ActiveCfg = Release|x86
 		{34485E9D-EDFF-483B-BFF3-AAFFC54F384E}.Release|x86.Build.0 = Release|x86
+		{4DEAF7FA-3CD1-4AC7-BC3C-208FFADBD5B1}.Debug|x86.ActiveCfg = Debug|x86
+		{4DEAF7FA-3CD1-4AC7-BC3C-208FFADBD5B1}.Debug|x86.Build.0 = Debug|x86
+		{4DEAF7FA-3CD1-4AC7-BC3C-208FFADBD5B1}.Release|x86.ActiveCfg = Release|x86
+		{4DEAF7FA-3CD1-4AC7-BC3C-208FFADBD5B1}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

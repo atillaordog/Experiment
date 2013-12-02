@@ -33,6 +33,8 @@ namespace TestExperiment
 
         override public void run()
         {
+            TestExperiment.experimentRuns = true;
+
             TestOutputter outputter = new TestOutputter();
             int counter = 19;
             while (counter > 0)
@@ -65,12 +67,15 @@ namespace TestExperiment
                 else
                 {
                     outputter.passEnvironment(this.environment);
-                    outputter.write();
+                   // outputter.write();
                     this.environment.doOneStepProcedural();
+                    outputter.serializeToBinary();
                 }
 
                 counter--;
             }
+
+            TestExperiment.experimentRuns = false;
         }
     }
 }
