@@ -11,7 +11,6 @@ namespace Experiment
     public abstract class Outputter
     {
         protected Environment e;
-        protected Stream s;
 
         public void passEnvironment(Environment e)
         {
@@ -20,19 +19,23 @@ namespace Experiment
 
         abstract public void write();
 
-        public void serializeToBinary()
+        public string serializeToString()
         {
-            try
+            string serialized = "size=" + this.e.getSize()[0] + "," + this.e.getSize()[1]+"::::";
+            // This is actually a simple thing, we create a big string that contains all the positions and creatures and knowledges
+            for (int i = 0, m = this.e.getPositions().Count; i < m; i++)
             {
-                this.s = File.Open("data.bin", FileMode.Create);
-               
-                BinaryFormatter bin = new BinaryFormatter();
-                bin.Serialize(this.s, this.e.getPositions());
-            }
-            catch (Exception)
-            {
+                serialized += "position=" + this.e.getPositions()[i].getLocation().x + "," + this.e.getPositions()[i].getLocation().y;
+                serialized += ";iscreature=" + this.e.getPositions()[i].getIsCreature();
+                serialized += ";isknowledge=" + this.e.getPositions()[i].getIsKnowledge();
+
+                if (i != m - 1)
+                {
+                    serialized += "][";
+                }
             }
 
+            return serialized;
         }
 
     }

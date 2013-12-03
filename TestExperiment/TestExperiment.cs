@@ -7,33 +7,34 @@ using System.Threading;
 
 namespace TestExperiment
 {
-    class TestExperiment : Experiment.Experiment
+    public class TestExperiment : Experiment.Experiment
     {
-        Experiment.Environment environment;
-
         override public void setUpEnvironment()
         {
             this.environment = new Experiment.Environment();
 
-            this.environment.setSize(20, 20);
+            this.environment.setSize(100, 100);
             this.environment.initialize();
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 100; i++)
             {
                 TestCreature c = new TestCreature(i);
-                c.setEnergy(10);
+                c.setEnergy(19);
                 this.environment.addCreatureToPosition(0, i, c);
             }
             Random rand = new Random();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 5000; i++)
             {
-                this.environment.addKnowledgeToPosition(rand.Next(2, 19), rand.Next(2, 19), new TestKnowledge());
+                TestKnowledge k = new TestKnowledge();
+                k.setId(i);
+
+                this.environment.addKnowledgeToPosition(rand.Next(0, 99), rand.Next(0, 99), k);
             }
         }
 
         override public void run()
         {
-            TestExperiment.experimentRuns = true;
+            this.experimentRuns = true;
 
             TestOutputter outputter = new TestOutputter();
             int counter = 19;
@@ -51,7 +52,7 @@ namespace TestExperiment
                             is_energy_left = true;
                         }
 
-                        if (this.environment.getPositions()[i].getCreature().getLocation().x == 19)
+                        if (this.environment.getPositions()[i].getCreature().getLocation().x == 99)
                         {
                             is_finished = true;
                         }
@@ -60,22 +61,23 @@ namespace TestExperiment
                
                 if (!is_energy_left || is_finished)
                 {
-                    Console.SetCursorPosition(this.environment.getSize()[0] + 1, this.environment.getSize()[1] + 1);
-                    Console.WriteLine("Experiment finished");
+                    /*Console.SetCursorPosition(this.environment.getSize()[0] + 1, this.environment.getSize()[1] + 1);
+                    Console.WriteLine("Experiment finished");*/
                     break;
                 }
                 else
                 {
-                    outputter.passEnvironment(this.environment);
+                   // outputter.passEnvironment(this.environment);
                    // outputter.write();
                     this.environment.doOneStepProcedural();
-                    outputter.serializeToBinary();
+                    Thread.Sleep(200);
+                   
                 }
 
-                counter--;
+                //counter--;
             }
 
-            TestExperiment.experimentRuns = false;
+            this.experimentRuns = false;
         }
     }
 }

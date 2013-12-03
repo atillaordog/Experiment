@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using TestExperiment;
+using System.Threading;
 
 namespace Viewer
 {
@@ -15,7 +17,19 @@ namespace Viewer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            TestExperiment.TestExperiment e = new TestExperiment.TestExperiment();
+            e.setUpEnvironment();
+
+            Viewer v = new Viewer();
+            v.attachToExperiment(e);
+
+            MainForm f = new MainForm(v);
+
+
+            Application.Run(f);
+
+            
         }
     }
 }

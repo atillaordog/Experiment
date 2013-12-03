@@ -7,7 +7,9 @@ namespace Experiment
 {
     abstract public class Experiment
     {
-        public static bool experimentRuns = false;
+        public bool experimentRuns = false;
+
+        public Environment environment;
 
         abstract public void setUpEnvironment();
         abstract public void run();

@@ -46,8 +46,8 @@ namespace TestExperiment
                 this.energy--;
             }
 
-            Console.SetCursorPosition(this.location.x, this.location.y);
-            Console.Write(this.energy);
+            /*Console.SetCursorPosition(this.location.x, this.location.y);
+            Console.Write(this.energy);*/
         }
     }
 }
